@@ -1,5 +1,10 @@
 package com.company;
 
+import com.company.Electrodomestico.Electrodomestico;
+import com.company.Electrodomestico.Lavadora;
+import com.company.Electrodomestico.Television;
+import com.company.Persona.Persona;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -7,7 +12,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Ejercicio16();
+        Ejercicio17();
 
     }
 
@@ -264,11 +269,43 @@ public class Main {
         System.out.printf(persona3.getNombre()+" ");persona3.calcularIMC();
 
         System.out.printf(persona.getNombre()+" ");persona.esMayorDeEdad();
-        System.out.printf(persona2.getNombre()+" "); persona2.esMayorDeEdad();
+        System.out.printf(persona2.getNombre()+" ");persona2.esMayorDeEdad();
         System.out.printf(persona3.getNombre()+" ");persona3.esMayorDeEdad();
 
         System.out.println(persona.toString());
         System.out.println(persona2.toString());
         System.out.println(persona3.toString());
+    }
+
+    public static void Ejercicio17(){
+        Electrodomestico[] electrodomestico=new Electrodomestico[10];
+        electrodomestico[0]= new Electrodomestico(200,"",'A',200);
+        electrodomestico[1]= new Television(400,"negro",'B',278,false,60);
+        electrodomestico[2]= new Television(800,"negro",'B',175,true,50);
+        electrodomestico[3]= new Television(800,"rojo",'B',160,false,60);
+        electrodomestico[4]= new Television(800,"morado",'B',163,false,70);
+        electrodomestico[5]= new Television(800,"negro",'B',300,true,20);
+        electrodomestico[6]= new Lavadora(200,"negro",'A',360,200);
+        electrodomestico[7]= new Lavadora(400,"roja",'Z',200,130);
+        electrodomestico[8]= new Lavadora(600,"gris",'C',250,70);
+        electrodomestico[9]= new Lavadora(700,"blanco",'E',300,30);
+
+        int precioTelevisionFinal = 0;
+        int precioLavadoraFinal = 0;
+        int resultadoFinal =0;
+
+        for (Electrodomestico el: electrodomestico) {
+            if(el instanceof Television){
+                precioTelevisionFinal += el.precioFinal();
+            }else if(el instanceof Lavadora){
+                precioLavadoraFinal += el.precioFinal();
+            }
+            resultadoFinal +=el.precioFinal();
+
+        }
+        System.out.println("Resultado Television: "+precioTelevisionFinal);
+        System.out.println("Resultado Lavadoras Final: "+precioLavadoraFinal);
+        System.out.println("Resultado Final: "+resultadoFinal);
+
     }
 }

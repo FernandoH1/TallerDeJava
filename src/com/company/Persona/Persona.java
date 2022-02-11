@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Persona;
 
 public class Persona {
     private String nombre = null;
@@ -69,18 +69,20 @@ public class Persona {
     }
 
     public int calcularIMC() {
-        int imc = 2;
-        if (this.peso < 20) {
-            System.out.println("Esta por el peso por debajo de lo normal");
+        int peso = this.peso;
+        double altura = this.altura;
+        double imc = peso/Math.pow(altura,2);
+        if (imc < 20) {
+            System.out.println("Su peso esta por debajo de lo normal");
             return -1;
-        } else if (this.peso < 26 && this.peso > 19) {
+        } else if (imc < 26 && imc > 19) {
             System.out.println("Su peso es Normal");
             return 0;
-        } else if (this.peso > 25) {
+        } else if (imc > 25) {
             System.out.println("Esta por encima de su peso normal(Sobrepeso)");
             return 1;
         }
-        return imc;
+        return -2;
     }
 
     public boolean esMayorDeEdad() {
